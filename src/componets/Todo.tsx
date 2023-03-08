@@ -1,25 +1,20 @@
-interface Todo {
-  id: number
-  title: string
-  completed: boolean
+import { type Todo as todoTypes } from '../types'
+
+interface Props extends todoTypes {
+  onRemoveTodo: (id: number) => void
 }
 
-type ListTodos = Todo[]
-
-interface Props {
-  todos: ListTodos
-}
-
-export const Todos: React.FC<Props> = ({ todos }) => {
+export const Todo: React.FC<Props> = ({ id, title, completed, onRemoveTodo }) => {
   return (
-        <ul>
-            {
-                todos.map(todo => (
-                    <li key={todo.id}>
-                        {todo.title}
-                    </li>
-                ))
-            }
-        </ul>
+       <div className='view'>
+            <input className='toggle'
+                type={'checkbox'}
+                onChange={() => {} }
+            />
+            <label>{title}</label>
+            <button className='destroy'
+                onClick={() => { onRemoveTodo(id) } }>
+            </button>
+       </div>
   )
 }
