@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { Todos } from './componets/Todos'
+import { type TodoId, type Todo as TodoType } from './types'
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 
 const mockTodos = [
@@ -24,9 +25,12 @@ const mockTodos = [
 const App = (): JSX.Element => {
   const [todos, setTodos] = useState(mockTodos)
 
-  const handleRemove = (id: number): void => {
+  const handleRemove = ({ id }: TodoId): void => {
     const newTodos = todos.filter(todo => todo.id !== id)
     setTodos(newTodos)
+  }
+  const handleCompleted = ({ id, completed }: Pick<TodoType, 'id' | 'completed'>): void => {
+    
   }
   return (
     <div className='todoapp'>
