@@ -11,7 +11,7 @@ export const Todo: React.FC<Props> = ({ id, title, completed, onRemoveTodo, onTo
                 checked={completed}
                 type={'checkbox'}
                 onChange={(event) => {
-                  onToggleCompleteTodo({ id, completed: event.target.checked })
+                  onToggleCompleteTodo({ id, completed: event.target.checked }) // afecta al input chekado
                 } }
             />
             <label>{title}</label>
